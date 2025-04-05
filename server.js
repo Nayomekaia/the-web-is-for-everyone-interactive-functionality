@@ -65,6 +65,10 @@ app.get('/project', async function (req, res) {
 // POST-route voor het formulier (project toevoegen)
 app.post('/project', (req, res) => {
   const { title, description, name } = req.body;
+
+  // Voeg een uniek ID toe aan elk project
+  const id = Date.now();
+  projects.push({ id, title, description, name });
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
 app.get(…, async function (request, response) {
