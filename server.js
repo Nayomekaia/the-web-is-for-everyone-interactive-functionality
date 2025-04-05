@@ -48,6 +48,14 @@ app.get('/', async function (request, response) {
 })
 
 console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
+app.get('/stekjes/:id', async function (request, response) {
+ const stekjeId = request.params.id;
+ const stekjeResponse = await fetch(`https://fdnd-agency.directus.app/items/bib_stekjes/${stekjeId}`);
+ const stekjeData = await stekjeResponse.json();
+
+
+ response.render('stekjes.liquid', { stekje: stekjeData.data });
+});
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
