@@ -58,6 +58,7 @@ app.get('/stekjes/:id', async function (request, response) {
 });
 
 let projects = [];
+app.get('/project', async function (req, res) {
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
 app.get(…, async function (request, response) {
