@@ -57,6 +57,7 @@ app.get('/stekjes/:id', async function (request, response) {
  response.render('stekjes.liquid', { stekje: stekjeData.data });
 });
 
+let projects = [];
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
 app.get(…, async function (request, response) {
