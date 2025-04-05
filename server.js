@@ -57,8 +57,14 @@ app.get('/stekjes/:id', async function (request, response) {
  response.render('stekjes.liquid', { stekje: stekjeData.data });
 });
 
+// Projects array voor tijdelijke opslag
 let projects = [];
+
+// GET-route voor de projectpagina
 app.get('/project', async function (req, res) {
+// POST-route voor het formulier (project toevoegen)
+app.post('/project', (req, res) => {
+  const { title, description, name } = req.body;
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
 app.get(…, async function (request, response) {
