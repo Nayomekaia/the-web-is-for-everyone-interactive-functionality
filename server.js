@@ -69,6 +69,10 @@ app.post('/project', (req, res) => {
   // Voeg een uniek ID toe aan elk project
   const id = Date.now();
   projects.push({ id, title, description, name });
+
+  res.redirect('/project?state=success'); // Succes state bij succesvol indienen
+});
+
 // POST-route voor het verwijderen van een project
 app.post('/delete-project', (req, res) => {
   const { id } = req.body;
@@ -78,6 +82,8 @@ app.post('/delete-project', (req, res) => {
 
   res.redirect('/project?state=deleted'); // Succesbericht voor verwijdering
 });
+
+
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
 app.get(…, async function (request, response) {
