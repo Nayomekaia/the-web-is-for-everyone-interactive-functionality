@@ -35,6 +35,17 @@ app.engine('liquid', engine.express());
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set('views', './views')
 
+// Maak een GET route voor de index (meestal doe je dit in de root, als /)
+app.get('/', async function (request, response) {
+  // Render index.liquid uit de Views map
+  
+  // Geef hier eventueel data aan mee
+  response.render('index.liquid', {
+   stekjes: stekjesResponseJSON.data,
+   afbeeldingen: afbeeldingenResponseJSON.data,
+   users: usersResponseJSON.data
+  })
+})
 
 console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
 
