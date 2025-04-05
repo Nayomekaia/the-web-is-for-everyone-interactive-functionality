@@ -5,6 +5,18 @@ import express from 'express'
 // Importeer de Liquid package (ook als dependency via npm geïnstalleerd)
 import { Liquid } from 'liquidjs';
 
+console.log 
+// database linken
+const stekjesResponse = await fetch('https://fdnd-agency.directus.app/items/bib_stekjes')
+const stekjesResponseJSON = await stekjesResponse.json()
+
+const afbeeldingenResponse = await fetch('https://fdnd-agency.directus.app/items/bib_afbeeldingen?filter={%20%22type%22:%20{%20%22_eq%22:%20%22stekjes%22%20}}')
+const afbeeldingenResponseJSON = await afbeeldingenResponse.json()
+
+const usersResponse = await fetch('https://fdnd-agency.directus.app/items/bib_users')
+const usersResponseJSON = await usersResponse.json()
+
+
 // Maak een nieuwe Express applicatie aan, waarin we de server configureren
 const app = express()
 
