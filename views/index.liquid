@@ -1,0 +1,102 @@
+{% render 'partials/head.liquid' %}
+{% include 'partials/nav.liquid' %}
+
+    <section class="header-title">
+        <h1>Stekjes</h1>
+    </section>
+</header>
+
+<article class="intro-stekjes">
+        <p> Hou je van planten of wil je juist je groene vingers 
+            ontdekken? In de Bieb in Bloei Hoek van OBA Linnaeus 
+            staat een vrolijke stekjeskast, gemaakt door kinderen 
+            uit de buurt bij de OBA Maakplaats. Hier kun je gratis 
+            plantjes ruilen met andere buurtbewoners.
+            Breng een stekje van thuis mee en kies een nieuw plantje 
+            uit de kast. Zo helpen we elkaar én maken we de stad een 
+            stukje groener! Of je nu al een ervaren plantenliefhebber 
+            bent of gewoon nieuwsgierig, iedereen kan meedoen.
+            Benieuwd hoe het werkt en wat een stekje precies is? 
+            Lees verder! 
+        </p>
+</article>
+
+<main>
+    
+   <section class="stekjeskast">
+    {% for afbeelding in afbeeldingen %}
+        <section class="carousel">
+        <img src="https://fdnd-agency.directus.app/assets/{{ afbeelding.foto }}" alt=""> 
+        </section>
+    {% endfor %}
+    </section>
+ 
+    
+    <article class="uitleg-stekjes">
+       <section class="kopje-stekjes">
+         <img class="pijltje" src="/assets/pijltje.png" alt="pijltje" >
+        <h2>Wat is een stekje?</h2>
+        </section>
+        <section class="harry-article">
+        <p> Een stekje is een klein stukje van een plant dat kan uitgroeien tot een nieuwe plant.
+            Dit is een makkelijke en leuke manier om planten te vermeerderen en te delen met anderen.
+            Er zijn verschillende manieren om stekjes te maken:
+            <span> - In water: Sommige planten, zoals pannenkoekplanten en monstera’s, maken wortels als je een
+             afgesneden stekje in een glas water zet. Zodra er wortels groeien, kun je het in aarde planten.</span>
+             <span> - In aarde: Andere planten kunnen direct in potgrond worden gezet. Dit werkt goed bij vetplanten 
+            of kruiden zoals munt.</span>
+            <span> -  Door delen: Sommige planten, zoals graslelies, groeien vanzelf kleine plantjes die je makkelijk 
+            los kunt halen en opnieuw kunt planten.</span>
+            Stekjes ruilen is niet alleen een duurzame manier om je plantenverzameling uit te breiden, maar het
+            is ook een leuke manier om met andere plantenliefhebbers in contact te komen.
+        </p>
+        <img class="harry" src="/assets/stekje.gif" alt="harry">
+        </section>
+    </article>
+
+    <section class="filter-button">
+    <select id="landherkomst">
+        <option value="">LANDHERKOMST</option>
+        <option value="Nederland">Nederland</option>
+        <option value="Afrika">Afrika</option>
+        <option value="Azië">Azië</option>
+        <option value="Zuid-Amerika">Zuid-Amerika</option>
+      </select>
+
+      <select id="giftigheid">
+        <option value="">GIFTIGHEID</option>
+        <option value="">GIFTIG</option>
+        <option value="">GIFTIG VOOR HUISDIEREN</option>
+        <option value="">IRRITERENT VOOR HUISDIEREN</option>
+        <option value="">NIET GIFTIG</option>
+      </select>
+      </section>
+
+      <section class="stekje">
+      {% for stekje in stekjes %}
+        <a href="/stekjes/{{stekje.id}}">
+        <img src="https://fdnd-agency.directus.app/assets/{{ stekje.foto }}" alt="">  <h3>{{stekje.naam}}</h3> </a>
+    {% endfor %}
+      </section>
+           
+    </section>
+
+    <section class="diy-stekjes">
+        <img class="harry-2" src="/assets/harry-2.png" alt="harry">
+        <article class="kopje-stekje-1">
+            <section class="kopje-stekjes">
+            <img class="pijltje" src="/assets/pijltje.png" alt="pijltje">
+            <h2>Hoe werkt het ? </h2>
+            </section>
+            <p> Het ruilen van stekjes is heel eenvoudig:
+                <span>1) Breng een stekje mee van thuis, in water of aarde.</span>
+                <span>2) Plaats het in de stekjeskast en kies een nieuw stekje uit.</span>
+                <span>3) Gebruik eventueel de potjes met aarde onder de kast om je stekje direct in te planten.</span>
+                <span>4) Neem je nieuwe stekje mee naar huis en laat het verder groeien.</span>
+                Zo zorgen we samen voor meer groen in de buurt!
+            </p>
+        </article>
+    </section>   
+</main>
+
+{% render 'partials/foot.liquid' %}
