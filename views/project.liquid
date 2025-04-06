@@ -1,6 +1,8 @@
 {% render 'partials/head.liquid' %}
 <body class="body-project">
 <header class="header-project">
+
+
 <a href="/" class="terug">terug</a>
 <h1>"Help Ons Groener Worden!" </h1>
 <p> Wil jij bijdragen aan een groener, gezonder en gezelliger
@@ -11,9 +13,27 @@
     zien en laten we samen onze buurt laten bloeien.</p>
 </header>
 
+{% if uiState == "success" %}
+  <section class="alert alert-success">
+    Je project is succesvol gepost!
+  </section>
+{% endif %}
+
+  {% if uiState == "error" %}
+    <section class="alert alert-error">
+       Er is een fout opgetreden bij het posten van je project.
+    </section>
+  {% endif %}
+
+  {% if uiState == "deleted" %}
+    <section class="alert alert-success">
+      Je project is succesvol verwijderd!
+    </section>
+  {% endif %}
 <section class="projecten">
     <section class="project-cards">
 {% if projects %}
+  
   <ul>
     {% for project in projects %}
       <li>
@@ -53,6 +73,7 @@
   
   <button type="submit">Verstuur Project</button>
 </form>
+
 </section>
 
 

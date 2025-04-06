@@ -47,7 +47,6 @@ app.get('/', async function (request, response) {
   })
 })
 
-console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
 app.get('/stekjes/:id', async function (request, response) {
  const stekjeId = request.params.id;
  const stekjeResponse = await fetch(`https://fdnd-agency.directus.app/items/bib_stekjes/${stekjeId}`);
@@ -62,9 +61,20 @@ let projects = [];
 
 // GET-route voor de projectpagina
 app.get('/project', async function (req, res) {
+  // Variabele voor UI states (bijvoorbeeld succesbericht)
+  const uiState = req.query.state || 'normal'; // Normale state als er geen state is
+
+  res.render('project.liquid', { projects, uiState });
+});
+
 // POST-route voor het formulier (project toevoegen)
 app.post('/project', (req, res) => {
   const { title, description, name } = req.body;
+
+  // Validatie en success/error feedback
+  if (!title || !description || !name) {
+    return res.redirect('/project?state=error'); // Error state bij incomplete invoer
+  }
 
   // Voeg een uniek ID toe aan elk project
   const id = Date.now();
@@ -134,9 +144,6 @@ app.set('port', process.env.PORT || 8000)
 // Start Express op, gebruik daarbij het zojuist ingestelde poortnummer op
 // Start Express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
-  // Toon een bericht in de console
-  console.log(`Daarna kun je via http://localhost:${app.get('port')}/ jouw interactieve website bekijken.\n\nThe Web is for Everyone. Maak mooie dingen 🙂`)
-})
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
